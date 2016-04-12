@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        
+        <div class="col-md-2">
+            Search: <input ng-model="vm.searchQuery">
+        </div>
+        
+        <div class="col-md-10">
+            <ul class="todoItems">
+                <li ng-repeat="item in vm.todoList | filter:vm.searchQuery">
+                    <span>{{item.title}}</span>
+                    <p>{{item.description}}</p>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+</div>
