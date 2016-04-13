@@ -13,6 +13,7 @@
         <div class="col-md-10">
             <ul class="todoItems">
                 <li ng-repeat="item in vm.todoList | filter:vm.searchQuery | orderBy:vm.sortBy">
+                    <input type="checkbox" ng-model="item.completed"/>
                     <span>{{item.title}}</span>
                     <p>{{item.description}}</p>
                 </li>

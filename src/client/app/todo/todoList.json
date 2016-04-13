@@ -1,0 +1,72 @@
+[
+    {
+        "title": "Clean My Room!",
+        "description": "Especially the 20 Chipotle bags in the corner.",
+        "age": 3,
+        "id": "clean-my-room-123456",
+        "completed": false
+    },
+    {
+        "title": "Write Moar Code!",
+        "description": "Cause you just can't get enough!",
+        "age": 2,
+        "id": "write-moar-code-123456",
+        "completed": false
+    },
+    {
+        "title": "Sleep",
+        "description": "Hahahahahahahaha!",
+        "age": 1,
+        "id": "sleep-123456",
+        "completed": false
+    },
+    {
+        "title": "Watch Suicide Squad",
+        "description": "The trailers for this movie are amazing.",
+        "age": 10,
+        "id": "watch-suicide-squad-123456",
+        "completed": false
+    },
+    {
+        "title": "Get Grocery's",
+        "description": "I just have Bacon in my fridge.",
+        "age": 4,
+        "id": "get-grocerys-123456",
+        "completed": true
+    },
+    {
+        "title": "Play Halo",
+        "description": "Get pumped for Warzone Firefight.",
+        "age": 8,
+        "id": "play-halo-123456",
+        "completed": false
+    },
+    {
+        "title": "Do Homework",
+        "description": "Gotta love my Masters Program.",
+        "age": 5,
+        "id": "do-homework-123456",
+        "completed": true
+    },
+    {
+        "title": "Upgrade Computer",
+        "description": "Gotta get ready for that VR life.",
+        "age": 7,
+        "id": "upgrade-computer-123456",
+        "completed": false
+    },
+    {
+        "title": "Create a new Blog Post",
+        "description": "I should really fill that part of my website out.",
+        "age": 6,
+        "id": "create-a-new-blog-post-123456",
+        "completed": true
+    },
+    {
+        "title": "Call Southwest",
+        "description": "Forgot to enter my KTN again.",
+        "age": 9,
+        "id": "call-southwest-123456",
+        "completed": false
+    }
+]
