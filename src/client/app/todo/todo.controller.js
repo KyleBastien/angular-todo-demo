@@ -9,7 +9,7 @@
   function TodoController($http) {
     var vm = this;
     vm.title = 'Admin';
-    vm.sortBy = 'age';
+    vm.statusFilter = 'null';
 
     activate();
     
