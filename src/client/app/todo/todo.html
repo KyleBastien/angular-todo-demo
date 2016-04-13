@@ -3,11 +3,16 @@
         
         <div class="col-md-2">
             Search: <input ng-model="vm.searchQuery">
+            Sort by:
+            <select ng-model="vm.sortBy">
+                <option value="name">Alphabetical</option>
+                <option value="age">Newest</option>
+            </select>
         </div>
         
         <div class="col-md-10">
             <ul class="todoItems">
-                <li ng-repeat="item in vm.todoList | filter:vm.searchQuery">
+                <li ng-repeat="item in vm.todoList | filter:vm.searchQuery | orderBy:vm.sortBy">
                     <span>{{item.title}}</span>
                     <p>{{item.description}}</p>
                 </li>

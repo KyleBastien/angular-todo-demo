@@ -8,6 +8,7 @@
   function TodoController() {
     var vm = this;
     vm.title = 'Admin';
+    vm.sortBy = 'age';
 
     activate();
 
@@ -16,15 +17,18 @@
       vm.todoList = [
         {
             title: 'Clean My Room!',
-            description: 'Especially the 20 Chipotle bags in the corner.'
+            description: 'Especially the 20 Chipotle bags in the corner.',
+            age: 3
         },
         {
             title: 'Write Moar Code!',
-            description: 'Cause you just can\'t get enough!'
+            description: 'Cause you just can\'t get enough!',
+            age: 2
         },
         {
             title: 'Sleep',
-            description: 'Hahahahahahahaha!'
+            description: 'Hahahahahahahaha!',
+            age: 1
         }
       ];
     }
