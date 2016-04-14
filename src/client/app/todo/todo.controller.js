@@ -5,8 +5,8 @@
     .module('todo.todo')
     .controller('TodoController', TodoController);
 
-  TodoController.$inject = ['$http'];
-  function TodoController($http) {
+  TodoController.$inject = ['logger', 'TodoListDataService'];
+  function TodoController(logger, TodoListDataService) {
     var vm = this;
     vm.title = 'Admin';
     vm.statusFilter = 'null';
@@ -16,10 +16,17 @@
     /////////////////////
 
     function activate() {
-      console.log('Activated Todo Controller');
-      $http.get('src/client/app/todo/todoList.json').then(function(response) {
-         vm.todoList = response.data; 
+      return getTodoList().then(function() {
+          logger.info('Activated Todo Controller');
       });
+    }
+    
+    function getTodoList() {
+      return TodoListDataService.getTodoList()
+          .then(function(data) {
+              vm.todoList = data;
+              return vm.todoList;
+          })
     }
   }
 })();
