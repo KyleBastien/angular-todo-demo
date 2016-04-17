@@ -43,8 +43,12 @@
       return deferred.promise;
     }
     
-    function put(item, index) {
+    function put(item) {
       var deferred = $q.defer();
+      
+      var index = vm.items.map(function(el) {
+        return el.Key;
+      }).indexOf(item.Key);
       
       vm.items[index] = item;
       

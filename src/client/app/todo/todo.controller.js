@@ -46,12 +46,13 @@
       var item = {
         title: title,
         completed: false,
-        id: _createRandomString(16)
+        Key: _createRandomString(16)
       };
       
       return TodoApi.insertTodoItem(item)
         .then(function(data) {
-          if(vm.todoList.indexOf(data) === -1) {
+          var indexOfData = _getIndexOfTodoItem(vm.todoList, data);
+          if(indexOfData === -1) {
             vm.todoList.push(data);
           }
           vm.newItem = '';
@@ -68,8 +69,9 @@
       
       return TodoApi.deleteTodoItem(item)
         .then(function(data) {
-          if(vm.todoList.indexOf(data) !== -1) {
-            vm.todoList.splice(vm.todoList.indexOf(data), 1);
+          var indexOfData = _getIndexOfTodoItem(vm.todoList, data);
+          if(indexOfData !== -1) {
+            vm.todoList.splice(indexOfData, 1);
           }
           return data;
         });
@@ -85,7 +87,7 @@
       
       return TodoApi.updateTodoItem(item)
         .then(function(data) {
-          if(vm.todoList[index] !== data) {
+          if(!_todoItemsEqual(vm.todoList[index], data)) {
             vm.todoList[index] = data;
           }
           return data;
@@ -105,5 +107,17 @@
   
   function _createRandomString(N) {
     return Array(N+1).join((Math.random().toString(36)+'00000000000000000').slice(2, 18)).slice(0, N);
+  }
+  
+  function _todoItemsEqual(one, two) {
+    if(one.Key !== two.Key || one.title !== two.title || one.completed !== two.completed)
+      return false;
+    return true;
+  }
+  
+  function _getIndexOfTodoItem(todos, item) {
+    return todos.map(function(el) {
+      return el.Key;
+    }).indexOf(item.Key);
   }
 })();
