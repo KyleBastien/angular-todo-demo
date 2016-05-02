@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.core')
+    .module('todo.core')
     .run(appRun);
 
   appRun.$inject = ['routerHelper'];

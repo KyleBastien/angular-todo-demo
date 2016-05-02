@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var core = angular.module('app.core');
+  var core = angular.module('todo.core');
 
   var config = {
     appErrorPrefix: '[todo Error] ',

@@ -2,7 +2,8 @@
   'use strict';
 
   angular.module('todo', [
-      'todo.todo'
+      'todo.core',
+	  'todo.todo'
   ]);
 
 })();
