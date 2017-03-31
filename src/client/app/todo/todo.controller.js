@@ -24,20 +24,18 @@
 
     function activate() {
       return getTodoList().then(function() {
-          logger.info('Activated Todo Controller');
+        logger.info('Activated Todo Controller');
       });
     }
     
     function getTodoList() {
-      return TodoApi.getTodoList()
-          .then(function(data) {
-            vm.todoList = data;
-            return vm.todoList;
-          });
+      return TodoApi.getTodoList().then(function(data) {
+        vm.todoList = data;
+        return vm.todoList;
+      });
     }
     
     function insertTodoItem(title) {
-      
       if(title === '') {
         return;
       }
@@ -49,59 +47,52 @@
         Key: _createRandomString(16)
       };
       
-      return TodoApi.insertTodoItem(item)
-        .then(function(data) {
-          var indexOfData = _getIndexOfTodoItem(vm.todoList, data);
-          if(indexOfData === -1) {
-            vm.todoList.push(data);
-          }
-          vm.newItem = '';
-          return data;
-        });
-        
+      return TodoApi.insertTodoItem(item).then(function(data) {
+        var indexOfData = _getIndexOfTodoItem(vm.todoList, data);
+        if(indexOfData === -1) {
+          vm.todoList.push(data);
+        }
+        vm.newItem = '';
+        return data;
+      });
     }
     
     function removeTodoItem(item) {
-      
       if(item === null || item === {}) {
         return;
       }
       
-      return TodoApi.deleteTodoItem(item)
-        .then(function(data) {
-          var indexOfData = _getIndexOfTodoItem(vm.todoList, data);
-          if(indexOfData !== -1) {
-            vm.todoList.splice(indexOfData, 1);
-          }
-          return data;
-        });
+      return TodoApi.deleteTodoItem(item).then(function(data) {
+        var indexOfData = _getIndexOfTodoItem(vm.todoList, data);
+        if(indexOfData !== -1) {
+          vm.todoList.splice(indexOfData, 1);
+        }
+        return data;
+      });
     }
     
     function updateTodoItem(item) {
-      
       if(item === null || item === {}) {
         return;
       }
       
       var index = vm.todoList.indexOf(item);
       
-      return TodoApi.updateTodoItem(item)
-        .then(function(data) {
-          if(!_todoItemsEqual(vm.todoList[index], data)) {
-            vm.todoList[index] = data;
-          }
-          return data;
-        });
+      return TodoApi.updateTodoItem(item).then(function(data) {
+        if(!_todoItemsEqual(vm.todoList[index], data)) {
+          vm.todoList[index] = data;
+        }
+        return data;
+      });
     }
     
     function clearCompletedItems() {
-      return TodoApi.clearCompleted()
-        .then(function(data) {
-          if(vm.todoList !== data) {
-            vm.todoList = data;
-          }
-          return vm.todoList;
-        });
+      return TodoApi.clearCompleted().then(function(data) {
+        if(vm.todoList !== data) {
+          vm.todoList = data;
+        }
+        return vm.todoList;
+      });
     }
   }
   

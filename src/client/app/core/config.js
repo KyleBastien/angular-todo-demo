@@ -12,13 +12,14 @@
 
   core.config(configure);
 
-  configure.$inject = ['$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider'];
-  function configure($logProvider, routerHelperProvider, exceptionHandlerProvider) {
+  configure.$inject = ['$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider', '$qProvider'];
+  function configure($logProvider, routerHelperProvider, exceptionHandlerProvider, $qProvider) {
     if ($logProvider.debugEnabled) {
       $logProvider.debugEnabled(true);
     }
     exceptionHandlerProvider.configure(config.appErrorPrefix);
     routerHelperProvider.configure({ docTitle: config.appTitle + ': ' });
+    $qProvider.errorOnUnhandledRejections(false);
   }
 
 })();

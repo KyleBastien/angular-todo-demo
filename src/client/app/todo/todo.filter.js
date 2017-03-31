@@ -4,25 +4,25 @@
   angular
     .module('todo.todo')
     .filter('ItemStatusFilter', function() { 
-        return ItemStatusFilter; 
+      return ItemStatusFilter; 
     });
 
   function ItemStatusFilter(input, status) {
     if(status === "null") {
-        return input;
+      return input;
     }
     
     if(status === "false") {
-        status = false;
+      status = false;
     } else {
-        status = true;
+      status = true;
     }
     
     var out = [];
     angular.forEach(input, function(item) {
-        if(item.completed === status) {
-            out.push(item);
-        }
+      if(item.completed === status) {
+        out.push(item);
+      }
     });
     return out;
   }

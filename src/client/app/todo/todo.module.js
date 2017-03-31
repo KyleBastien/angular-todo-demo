@@ -2,8 +2,8 @@
   'use strict';
 
   angular.module('todo.todo', [
-      'todo.core',
-      'todo.api'
+    'todo.core',
+    'todo.api'
   ]);
 
 })();
