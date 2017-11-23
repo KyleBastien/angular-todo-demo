@@ -8,7 +8,7 @@
     });
 
   function ItemStatusFilter(input, status) {
-    if(status === "null") {
+    if(status === "null" || !status) {
       return input;
     }
     

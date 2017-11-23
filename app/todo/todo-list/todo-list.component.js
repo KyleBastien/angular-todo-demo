@@ -29,11 +29,16 @@
       $ctrl.removeTodoItem = removeTodoItem;
       
       $ctrl.$onInit = onInit;
+      $ctrl.$onChanges = onChanges;
 
       ////////////////
 
       function onInit() {
         logger.info('Activated Todo List Component');
+      }
+
+      function onChanges(changes) {
+        logger.info(JSON.stringify(changes));
       }
 
       function updateTodoItem(item) {

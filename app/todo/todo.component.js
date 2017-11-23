@@ -20,10 +20,7 @@
   function TodoController(logger, TodoApi) {
     var $ctrl = this;
 
-    $ctrl.title = 'Admin';
-    $ctrl.statusFilter = 'null';
     $ctrl.todoList = [];
-    $ctrl.newItem = '';
     
     $ctrl.insertTodoItem = insertTodoItem;
     $ctrl.removeTodoItem = removeTodoItem;
@@ -33,7 +30,6 @@
     $ctrl.$onInit = onInit;
     
     ////////////////
-    
 
     function onInit() {
       return getTodoList().then(function() {
@@ -65,7 +61,6 @@
         if(indexOfData === -1) {
           $ctrl.todoList.push(data);
         }
-        $ctrl.newItem = '';
         return data;
       });
     }
