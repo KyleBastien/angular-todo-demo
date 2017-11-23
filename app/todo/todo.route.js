@@ -16,7 +16,7 @@
         state: 'todo',
         config: {
           url: '/todo',
-          templateUrl: '/src/client/app/todo/todo.html',
+          templateUrl: '/app/todo/todo.html',
           controller: 'TodoController',
           controllerAs: 'vm',
           title: 'Todo'
