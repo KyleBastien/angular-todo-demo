@@ -16,9 +16,7 @@
         state: 'todo',
         config: {
           url: '/todo',
-          templateUrl: '/app/todo/todo.html',
-          controller: 'TodoController',
-          controllerAs: 'vm',
+          component: 'todo',
           title: 'Todo'
         }
       }

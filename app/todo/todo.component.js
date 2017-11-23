@@ -1,40 +1,53 @@
 (function() {
   'use strict';
 
+  // Usage:
+  // <todo></todo>
+  // Creates:
+  // A Todo Component which shows the form to input Todo's as well as the list of Todos to display.
+
   angular
     .module('todo.todo')
-    .controller('TodoController', TodoController);
+    .component('todo', {
+      templateUrl: '/app/todo/todo.html',
+      controller: TodoController,
+      controllerAs: '$ctrl',
+      bindings: {
+      },
+    });
 
-  TodoController.$inject = ['logger', 'TodoApi'];
-  function TodoController(logger, TodoApi) {
-    var vm = this;
-    vm.title = 'Admin';
-    vm.statusFilter = 'null';
-    vm.todoList = [];
-    vm.newItem = '';
+  TodoController.$inject = ['dependency1'];
+  function TodoController(dependency1) {
+    var $ctrl = this;
+
+    $ctrl.title = 'Admin';
+    $ctrl.statusFilter = 'null';
+    $ctrl.todoList = [];
+    $ctrl.newItem = '';
     
-    vm.insertTodoItem = insertTodoItem;
-    vm.removeTodoItem = removeTodoItem;
-    vm.updateTodoItem = updateTodoItem;
-    vm.clearCompletedItems = clearCompletedItems;
+    $ctrl.insertTodoItem = insertTodoItem;
+    $ctrl.removeTodoItem = removeTodoItem;
+    $ctrl.updateTodoItem = updateTodoItem;
+    $ctrl.clearCompletedItems = clearCompletedItems;
 
-    activate();
+    $ctrl.$onInit = onInit;
     
-    /////////////////////
+    ////////////////
+    
 
-    function activate() {
+    function onInit() {
       return getTodoList().then(function() {
         logger.info('Activated Todo Controller');
       });
     }
-    
+
     function getTodoList() {
       return TodoApi.getTodoList().then(function(data) {
         vm.todoList = data;
         return vm.todoList;
       });
     }
-    
+
     function insertTodoItem(title) {
       if(title === '') {
         return;
@@ -56,7 +69,7 @@
         return data;
       });
     }
-    
+
     function removeTodoItem(item) {
       if(item === null || item === {}) {
         return;
@@ -70,7 +83,7 @@
         return data;
       });
     }
-    
+
     function updateTodoItem(item) {
       if(item === null || item === {}) {
         return;
@@ -85,7 +98,7 @@
         return data;
       });
     }
-    
+
     function clearCompletedItems() {
       return TodoApi.clearCompleted().then(function(data) {
         if(vm.todoList !== data) {
@@ -95,14 +108,15 @@
       });
     }
   }
-  
+
   function _createRandomString(N) {
     return Array(N+1).join((Math.random().toString(36)+'00000000000000000').slice(2, 18)).slice(0, N);
   }
   
   function _todoItemsEqual(one, two) {
-    if(one.Key !== two.Key || one.title !== two.title || one.completed !== two.completed)
+    if(one.Key !== two.Key || one.title !== two.title || one.completed !== two.completed) {
       return false;
+    }
     return true;
   }
   
