@@ -16,8 +16,8 @@
       },
     });
 
-  TodoController.$inject = ['dependency1'];
-  function TodoController(dependency1) {
+  TodoController.$inject = ['logger', 'TodoApi'];
+  function TodoController(logger, TodoApi) {
     var $ctrl = this;
 
     $ctrl.title = 'Admin';
@@ -43,8 +43,8 @@
 
     function getTodoList() {
       return TodoApi.getTodoList().then(function(data) {
-        vm.todoList = data;
-        return vm.todoList;
+        $ctrl.todoList = data;
+        return $ctrl.todoList;
       });
     }
 
@@ -61,11 +61,11 @@
       };
       
       return TodoApi.insertTodoItem(item).then(function(data) {
-        var indexOfData = _getIndexOfTodoItem(vm.todoList, data);
+        var indexOfData = _getIndexOfTodoItem($ctrl.todoList, data);
         if(indexOfData === -1) {
-          vm.todoList.push(data);
+          $ctrl.todoList.push(data);
         }
-        vm.newItem = '';
+        $ctrl.newItem = '';
         return data;
       });
     }
@@ -76,9 +76,9 @@
       }
       
       return TodoApi.deleteTodoItem(item).then(function(data) {
-        var indexOfData = _getIndexOfTodoItem(vm.todoList, data);
+        var indexOfData = _getIndexOfTodoItem($ctrl.todoList, data);
         if(indexOfData !== -1) {
-          vm.todoList.splice(indexOfData, 1);
+          $ctrl.todoList.splice(indexOfData, 1);
         }
         return data;
       });
@@ -89,11 +89,11 @@
         return;
       }
       
-      var index = vm.todoList.indexOf(item);
+      var index = $ctrl.todoList.indexOf(item);
       
       return TodoApi.updateTodoItem(item).then(function(data) {
-        if(!_todoItemsEqual(vm.todoList[index], data)) {
-          vm.todoList[index] = data;
+        if(!_todoItemsEqual($ctrl.todoList[index], data)) {
+          $ctrl.todoList[index] = data;
         }
         return data;
       });
@@ -101,10 +101,10 @@
 
     function clearCompletedItems() {
       return TodoApi.clearCompleted().then(function(data) {
-        if(vm.todoList !== data) {
-          vm.todoList = data;
+        if($ctrl.todoList !== data) {
+          $ctrl.todoList = data;
         }
-        return vm.todoList;
+        return $ctrl.todoList;
       });
     }
   }

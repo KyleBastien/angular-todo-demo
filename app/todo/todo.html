@@ -15,13 +15,9 @@
     </div>
         
     <div class="col-md-10">
-      <ul class="todoItems">
-        <li ng-repeat="item in $ctrl.todoList | filter:$ctrl.searchQuery | ItemStatusFilter:$ctrl.statusFilter" class="todo-listing">
-          <input type="checkbox" ng-model="item.completed" ng-click="$ctrl.updateTodoItem(item)"/>
-          <span>{{item.title}}</span>
-          <button ng-click="$ctrl.removeTodoItem(item)">X</button>
-        </li>
-      </ul>
+      <todo-list items="$ctrl.todoList" search-query="$ctrl.searchQuery"
+        status-filter="$ctrl.statusFilter" on-update="$ctrl.updateTodoItem(item)"
+        on-remove="$ctrl.removeTodoItem(item)"></todo-list>
     </div>
         
   </div>

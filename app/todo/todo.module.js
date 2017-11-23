@@ -3,7 +3,8 @@
 
   angular.module('todo.todo', [
     'todo.core',
-    'todo.api'
+    'todo.api',
+    'todo.todo-list'
   ]);
 
 })();

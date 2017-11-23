@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('todo.todo')
+    .module('todo.todo-list')
     .filter('ItemStatusFilter', function() { 
       return ItemStatusFilter; 
     });
