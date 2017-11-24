@@ -24,47 +24,13 @@
     
     <!-- NPM Modules -->
     <script src="/node_modules/jquery/dist/jquery.js"></script>
-    <script src="/node_modules/angular/angular.js"></script>
-    <script src="/node_modules/angular-sanitize/angular-sanitize.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
-    <script src="/node_modules/angular-animate/angular-animate.js"></script>
-        
-    <!-- Core Application JavaScript -->
-    <script src="/app/app.module.js"></script>
-    <script src="/app/app.component.js"></script>
-    <script src="/app/blocks/exception/exception.module.js"></script>
-    <script src="/app/blocks/logger/logger.module.js"></script>
-    <script src="/app/blocks/router/router.module.js"></script>
-    <script src="/app/core/core.module.js"></script>
-    <script src="/app/blocks/exception/exception-handler.provider.js"></script>
-    <script src="/app/blocks/exception/exception.js"></script>
-    <script src="/app/blocks/logger/logger.js"></script>
-    <script src="/app/blocks/router/router-helper.provider.js"></script>
-    <script src="/app/core/config.js"></script>
-    <script src="/app/core/core.route.js"></script>
-    
-    <!-- Todo API Module -->
-    <script src="/app/todo-api/todo-api.module.js"></script>
-    <script src="/app/todo-api/localstorage.service.js"></script>
-    <script src="/app/todo-api/todo-api.service.js"></script>
 
-    <!-- Todo List Module -->
-    <script src="/app/todo/todo-list/todo-list.module.js"></script>
-    <script src="/app/todo/todo-list/todo-list.component.js"></script>
-    <script src="/app/todo/todo-list/todo-list.filter.js"></script>
-
-    <!-- Todo Form Module -->
-    <script src="/app/todo/todo-form/todo-form.module.js"></script>
-    <script src="/app/todo/todo-form/todo-form.component.js"></script>
-
-    <!-- Todo Module -->
-    <script src="/app/todo/todo.module.js"></script>
-    <script src="/app/todo/todo.route.js"></script>
-    <script src="/app/todo/todo.component.js"></script>
-
-    <!-- Main -->
-    <script src="/app/main.js"></script>
+    <script src="/node_modules/systemjs/dist/system.js"></script>
+    <script src="system.config.js"></script>
+    <script type="text/javascript">
+      System.import('app').catch(console.error.bind(console));
+    </script>
   </body>
 </html>
 
