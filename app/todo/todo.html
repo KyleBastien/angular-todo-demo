@@ -4,8 +4,7 @@
     <div class="col-md-2">
       <todo-form on-search-query-changed="$ctrl.searchQuery = searchQuery"
          on-status-filter-changed="$ctrl.statusFilter = statusFilter"
-         on-item-added="$ctrl.insertTodoItem(item)"
-         on-clear-completed-item="$ctrl.clearCompletedItems()"></todo-form>
+         on-item-added="$ctrl.insertTodoItem(item)"></todo-form>
     </div>
         
     <div class="col-md-10">
@@ -14,5 +13,8 @@
         on-remove="$ctrl.removeTodoItem(item)"></todo-list>
     </div>
         
+  </div>
+  <div class="row">
+    <todo-footer [items]="$ctrl.todoList" (remove-completed)="$ctrl.clearCompletedItems()"></todo-footer>
   </div>
 </div>

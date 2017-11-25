@@ -7,7 +7,6 @@ export class TodoFormController {
     private onItemAdded: ({ item }) => void;
     private onStatusFilterChanged: ({ statusFilter }) => void;
     private onSearchQueryChanged: ({ searchQuery }) => void;
-    private onClearCompletedItem: () => void;
   
     static $inject = ['logger'];
     constructor(private logger) {
@@ -36,9 +35,5 @@ export class TodoFormController {
       this.onSearchQueryChanged({
         searchQuery: this.searchQuery
       })
-    }
-  
-    public clearCompletedItems() {
-      this.onClearCompletedItem();
     }
   }

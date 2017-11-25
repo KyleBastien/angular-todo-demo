@@ -1,6 +1,9 @@
+import { TodoItem } from "../todo-api/todo-api.service";
+
 export class TodoController {
 
-  public todoList = [];
+  public todoList: TodoItem[];
+  public completedItems: number;
 
   static $inject = ['logger', 'TodoApi'];
   constructor(private logger, private TodoApi) {}

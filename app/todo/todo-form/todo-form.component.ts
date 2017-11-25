@@ -16,6 +16,5 @@ export const TodoFormComponent: angular.IComponentOptions = {
     onSearchQueryChanged: '&',
     onStatusFilterChanged: '&',
     onItemAdded: '&',
-    onClearCompletedItem: '&'
   },
 };
