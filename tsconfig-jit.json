@@ -13,7 +13,7 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "dist",
+    "outDir": "dist-jit",
     "pretty": true,
     "rootDir": "app",
     "skipLibCheck": true,
@@ -25,5 +25,9 @@
   },
   "include": [
     "app/**/*"
+  ],
+  "exclude": [
+    "app/main-aot.ts",
+    "app/**/*.ngfactory.ts"
   ]
 }

@@ -1,8 +1,8 @@
 export class TodoFormController {
   
-    public newItem = '';
-    public statusFilter = 'null';
-    public searchQuery = null;
+    public newItem;
+    public statusFilter;
+    public searchQuery;
   
     private onItemAdded: ({ item }) => void;
     private onStatusFilterChanged: ({ statusFilter }) => void;
@@ -10,7 +10,11 @@ export class TodoFormController {
     private onClearCompletedItem: () => void;
   
     static $inject = ['logger'];
-    constructor(private logger) {}
+    constructor(private logger) {
+      this.newItem = '';
+      this.statusFilter = 'null';
+      this.searchQuery = null;
+    }
   
     public $onInit() {
       this.logger.info('TodoForm Component Activated');

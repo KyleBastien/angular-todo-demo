@@ -1,7 +1,11 @@
 export class exceptionHandlerProvider {
-  public config = {
-    appErrorPrefix: undefined
-  };
+  public config;
+
+  constructor() {
+    this.config = {
+      appErrorPrefix: undefined
+    };
+  }
 
   public configure(appErrorPrefix) {
     this.config.appErrorPrefix = appErrorPrefix;

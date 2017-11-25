@@ -4,5 +4,14 @@ node_modules/
 tmp 
 .idea 
 .DS_Store 
-/dist
 /yarn-error.log
+
+/dist-aot
+/dist-jit
+/temp-aot
+
+/index.html
+/yarn-error.log
+
+**/*.ngfactory.ts
+**/*.ngsummary.json

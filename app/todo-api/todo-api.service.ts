@@ -7,12 +7,15 @@ export interface TodoItem {
 }
 
 export class TodoApi {
-  public todoList: TodoItem[] = [];
+  public todoList: TodoItem[];
 
-  private STORAGE_ID = 'todos-angularjs';
+  private STORAGE_ID;
 
   static $inject = ['$q'];
-  constructor(private $q) {}
+  constructor(private $q) {
+    this.todoList = [];
+    this.STORAGE_ID = 'todos-angularjs';
+  }
 
   public getTodoList() {
     let deferred = this.$q.defer();
