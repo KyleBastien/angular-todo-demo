@@ -1,21 +1,26 @@
-export class logger {
+import { Injectable } from "@angular/core";
 
-  static $inject = ['$log'];
-  constructor(private $log) {}
+@Injectable()
+export class Logger {
+  public debugEnabled;
 
-  public error(message, data) {
-    this.$log.error('Error: ' + message, data);
+  constructor() {
+    this.debugEnabled = true;
   }
 
-  public info(message, data) {
-    this.$log.info('Info: ' + message, data);
+  public info(message: string, data?: any) {
+    console.info(`Info: ${message}`, data);
   }
 
-  public success(message, data) {
-    this.$log.info('Success: ' + message, data);
+  public error(message: string, data?: any) {
+    console.error(`Error: ${message}`, data);
   }
 
-  public warning(message, data) {
-    this.$log.warn('Warning: ' + message, data);
+  public success(message: string, data?: any) {
+    console.info(`Success: ${message}`, data);
+  }
+
+  public warning(message: string, data?: any) {
+    console.warn(`Warning: ${message}`, data);
   }
 }

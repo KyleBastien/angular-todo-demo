@@ -1,10 +1,11 @@
 import * as angular from 'angular';  
 import { exceptionModule } from '../blocks/exception/exception.module';
-import { loggerModule } from '../blocks/logger/logger.module';
+import { loggerModule, LoggerModule } from '../blocks/logger/logger.module';
 import { routerModule } from '../blocks/router/router.module';
 import uiRouter from '@uirouter/angularjs';
 import 'angular-sanitize';
 import 'angular-animate';
+import { NgModule } from '@angular/core';
   
 export const coreModule = angular
   .module('todo.core', [
@@ -39,3 +40,10 @@ export const coreModule = angular
       $qProvider.errorOnUnhandledRejections(false);
     }
   ]);
+
+@NgModule({
+  imports: [
+    LoggerModule
+  ]
+})
+export class CoreModule {}

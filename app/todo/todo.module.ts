@@ -4,6 +4,10 @@ import { todoListModule } from './todo-list/todo-list.module';
 import { todoFormModule } from './todo-form/todo-form.module';
 import { coreModule } from '../core/core.module';
 import { todoApiModule } from '../todo-api/todo-api.module';
+import { NgModule } from '@angular/core';
+import { TodoFooterModule } from './todo-footer/todo-footer.module';
+import { TodoFooterComponent } from './todo-footer/todo-footer.component';
+import { downgradeComponent } from '@angular/upgrade/static';
 
 export const todoModule = angular
   .module('todo.todo', [
@@ -13,6 +17,7 @@ export const todoModule = angular
     todoFormModule.name
   ])
   .component('todo', TodoComponent)
+  .directive('todoFooter', downgradeComponent({ component: TodoFooterComponent }))
   .run(['routerHelper', (routerHelper) => {
     routerHelper.configureStates([
       {
@@ -25,3 +30,10 @@ export const todoModule = angular
       }
     ]);
   }]);
+
+@NgModule({
+  imports: [
+    TodoFooterModule
+  ]
+})
+export class TodoModule {}

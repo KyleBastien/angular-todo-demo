@@ -1,6 +1,15 @@
 import * as angular from 'angular';
-import { logger } from './logger';
+import { Logger } from './logger';
+import { NgModule } from '@angular/core';
+import { downgradeInjectable } from '@angular/upgrade/static';
 
 export const loggerModule = angular
   .module('blocks.logger', [])
-  .service('logger', logger);
+  .factory('logger', downgradeInjectable(Logger));
+
+@NgModule({
+  providers: [
+    Logger
+  ]
+})
+export class LoggerModule {}

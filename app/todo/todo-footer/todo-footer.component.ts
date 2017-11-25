@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { TodoItem } from '../../todo-api/todo-api.service';
+import { Logger } from '../../blocks/logger/logger';
 
 @Component({
   selector: 'todo-footer',
   templateUrl: './todo-footer.html',
 })
-export class TodoFooterComponent {
+export class TodoFooterComponent implements OnInit {
 
   @Input()
   public items: TodoItem[];
@@ -13,9 +14,13 @@ export class TodoFooterComponent {
   @Output()
   public removeCompleted;
 
-  constructor() {
+  constructor(private logger: Logger) {
     this.items = [];
     this.removeCompleted = new EventEmitter<void>();
+  }
+
+  ngOnInit() {
+    this.logger.info('TodoFooter Component Activated');
   }
 
   get completedCount(): number {
