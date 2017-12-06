@@ -1,18 +1,23 @@
-import * as angular from 'angular';
-import { TodoListComponent, TodoListComponentFacade } from './todo-list.component';
-import { ItemStatusFilter } from './todo-list.filter';
-import { coreModule } from '../../core/core.module';
+import { TodoListComponent } from './todo-list.component';
+import { ItemStatusFilter } from './item-status.pipe';
+import { ItemSearchFilter } from './item-search.pipe';
 import { NgModule } from '@angular/core';
-
-export const todoListModule = angular
-  .module('todo.todo-list', [
-    coreModule.name
-  ])
-  .component('todoList', TodoListComponent)
-  .filter('ItemStatusFilter', ItemStatusFilter);
+import { LoggerModule } from '../../blocks/logger/logger.module';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [TodoListComponentFacade],
-  exports: [TodoListComponentFacade],
+  declarations: [
+    ItemStatusFilter,
+    ItemSearchFilter,
+    TodoListComponent
+  ],
+  exports: [TodoListComponent],
+  entryComponents: [TodoListComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    LoggerModule
+  ]
 })
 export class TodoListModule {}

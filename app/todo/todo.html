@@ -8,9 +8,9 @@
     </div>
         
     <div class="col-md-10">
-      <todo-list items="$ctrl.todoList" search-query="$ctrl.searchQuery"
-        status-filter="$ctrl.statusFilter" on-update="$ctrl.updateTodoItem(item)"
-        on-remove="$ctrl.removeTodoItem(item)"></todo-list>
+      <todo-list [items]="$ctrl.todoList" [search-query]="$ctrl.searchQuery"
+        [status-filter]="$ctrl.statusFilter" (on-update)="$ctrl.updateTodoItem($event)"
+        (on-remove)="$ctrl.removeTodoItem($event)"></todo-list>
     </div>
         
   </div>

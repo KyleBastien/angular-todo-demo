@@ -2,6 +2,12 @@
 # yarn lockfile v1
 
 
+"@angular/animations@^5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-5.0.5.tgz#8a008900a79cd9ecb0ee741534ec435cce9539a5"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/common@^5.0.3":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-5.0.3.tgz#9b0b874e0c8cb088d7c7de2af72c2c3f3ebd00bb"
@@ -26,6 +32,12 @@
 "@angular/core@^5.0.3":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-5.0.3.tgz#2566400f6713bf1c39f7e00bc03a63280a87e66b"
+  dependencies:
+    tslib "^1.7.1"
+
+"@angular/forms@^5.0.3":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-5.0.5.tgz#3e910bfe34618c482bf21a8659fa9a1b2dbc1f3a"
   dependencies:
     tslib "^1.7.1"
 

@@ -1,7 +1,7 @@
 <ul class="todoItems">
-  <li ng-repeat="item in $ctrl.items | filter:$ctrl.searchQuery | ItemStatusFilter:$ctrl.statusFilter" class="todo-listing">
-    <input type="checkbox" ng-model="item.completed" ng-click="$ctrl.updateTodoItem(item)"/>
+  <li [@fadeInOut]="'in'" *ngFor="let item of items | ItemSearchFilter:searchQuery | ItemStatusFilter:statusFilter">
+    <input type="checkbox" [(ngModel)]="item.completed" (click)="updateTodoItem(item, !item.completed)"/>
     <span>{{item.title}}</span>
-    <button ng-click="$ctrl.removeTodoItem(item)">X</button>
+    <button (click)="removeTodoItem(item)">X</button>
   </li>
 </ul>

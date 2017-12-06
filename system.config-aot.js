@@ -16,6 +16,9 @@
       '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
       '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
+      '@angular/animations': 'npm:@angular/animations/bundles/animations.umd.js',
+      '@angular/animations/browser': 'npm:@angular/animations/bundles/animations-browser.umd.js',
+      '@angular/platform-browser/animations': 'npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js',
       rxjs: 'npm:rxjs',
     },
     packages: {
