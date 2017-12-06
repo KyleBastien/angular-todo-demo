@@ -5,6 +5,7 @@ import { coreModule, CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { UpgradeModule } from '@angular/upgrade/static';
+import { TodoApiModule } from './todo-api/todo-api.module';
 
 export const appModule = angular
   .module('todo', [
@@ -18,6 +19,7 @@ export const appModule = angular
     BrowserModule,
     UpgradeModule,
     CoreModule,
+    TodoApiModule,
     TodoModule
   ],
 })
