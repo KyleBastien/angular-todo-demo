@@ -2,19 +2,19 @@
   <div class="row">
       
     <div class="col-md-2">
-      <todo-form (on-search-query-changed)="$ctrl.searchQuery = $event"
-         (on-status-filter-changed)="$ctrl.statusFilter = $event"
-         (on-item-added)="$ctrl.insertTodoItem($event)"></todo-form>
+      <todo-form (onSearchQueryChanged)="searchQuery = $event"
+         (onStatusFilterChanged)="statusFilter = $event"
+         (onItemAdded)="insertTodoItem($event)"></todo-form>
     </div>
         
     <div class="col-md-10">
-      <todo-list [items]="$ctrl.todoList" [search-query]="$ctrl.searchQuery"
-        [status-filter]="$ctrl.statusFilter" (on-update)="$ctrl.updateTodoItem($event)"
-        (on-remove)="$ctrl.removeTodoItem($event)"></todo-list>
+      <todo-list [items]="todoList" [searchQuery]="searchQuery"
+        [statusFilter]="statusFilter" (onUpdate)="updateTodoItem($event)"
+        (onRemove)="removeTodoItem($event)"></todo-list>
     </div>
         
   </div>
   <div class="row">
-    <todo-footer [items]="$ctrl.todoList" (remove-completed)="$ctrl.clearCompletedItems()"></todo-footer>
+    <todo-footer [items]="todoList" (removeCompleted)="clearCompletedItems()"></todo-footer>
   </div>
 </div>

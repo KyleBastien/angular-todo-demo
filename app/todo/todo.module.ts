@@ -10,13 +10,14 @@ import { downgradeComponent } from '@angular/upgrade/static';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodoFormModule } from './todo-form/todo-form.module';
+import { LoggerModule } from '../blocks/logger/logger.module';
 
 export const todoModule = angular
   .module('todo.todo', [
     coreModule.name,
     todoApiModule.name
   ])
-  .component('todo', TodoComponent)
+  .directive('todo', downgradeComponent({ component: TodoComponent }))
   .directive('todoFooter', downgradeComponent({ component: TodoFooterComponent }))
   .directive('todoList', downgradeComponent({ component: TodoListComponent }))
   .directive('todoForm', downgradeComponent({ component: TodoFormComponent }))
@@ -37,7 +38,11 @@ export const todoModule = angular
   imports: [
     TodoFooterModule,
     TodoListModule,
-    TodoFormModule
-  ]
+    TodoFormModule,
+    LoggerModule
+  ],
+  declarations: [TodoComponent],
+  entryComponents: [TodoComponent],
+  exports: [TodoComponent]
 })
 export class TodoModule {}
