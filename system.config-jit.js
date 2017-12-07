@@ -19,6 +19,7 @@
       '@angular/animations': 'npm:@angular/animations/bundles/animations.umd.js',
       '@angular/animations/browser': 'npm:@angular/animations/bundles/animations-browser.umd.js',
       '@angular/platform-browser/animations': 'npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js',
+      lodash: 'npm:lodash',
       rxjs: 'npm:rxjs',
     },
     packages: {
@@ -28,6 +29,7 @@
       "angular-animate": {main: 'angular-animate', defaultExtension: 'js'},
       "angular-sanitize": {main: 'angular-sanitize', defaultExtension: 'js'},
       rxjs: {defaultExtension: 'js'},
+      lodash: {main: 'index', defaultExtension: 'js'}
     },
   });
 })(this);

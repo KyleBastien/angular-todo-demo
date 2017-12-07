@@ -1,4 +1,5 @@
-import * as angular from 'angular';
+import { Injectable } from '@angular/core';
+import * as cloneDeep from 'lodash/fp/cloneDeep';
 
 export interface TodoItem {
   Key: string;
@@ -6,87 +7,75 @@ export interface TodoItem {
   completed: boolean;
 }
 
+@Injectable()
 export class TodoApi {
   public todoList: TodoItem[];
-
   private STORAGE_ID;
 
-  static $inject = ['$q'];
-  constructor(private $q) {
+  constructor() {
     this.todoList = [];
     this.STORAGE_ID = 'todos-angularjs';
   }
 
-  public getTodoList() {
-    let deferred = this.$q.defer();
-    
-    angular.copy(this.getFromLocalStorage(), this.todoList);
-    deferred.resolve(this.todoList);
-    
-    return deferred.promise;
+  public getTodoList(): Promise<TodoItem[]> {
+    return new Promise((resolve) => {
+      this.todoList = cloneDeep(this.getFromLocalStorage());
+      resolve(this.todoList);
+    });
   }
 
-  public insertTodoItem(item: TodoItem) {
-    let deferred = this.$q.defer();
-    
-    this.todoList.push(item);
-    
-    this.saveToLocalStorage(this.todoList); 
-    deferred.resolve(item);
-    
-    return deferred.promise;
+  public insertTodoItem(item: TodoItem): Promise<TodoItem> {
+    return new Promise((resolve) => {
+      this.todoList.push(item);
+      this.saveToLocalStorage(this.todoList);
+      resolve(item);
+    });
   }
 
-  public updateTodoItem(item: TodoItem) {
-    let deferred = this.$q.defer();
-    
-    let index = this.todoList.map((el) => {
-      return el.Key;
-    }).indexOf(item.Key);
-    
-    this.todoList[index] = item;
-    
-    this.saveToLocalStorage(this.todoList);
-    deferred.resolve(item);
-    
-    return deferred.promise;
+  public updateTodoItem(item: TodoItem): Promise<TodoItem> {
+    return new Promise((resolve) => {
+      let index = this.todoList.map((el) => {
+        return el.Key;
+      }).indexOf(item.Key);
+      
+      this.todoList[index] = item;
+
+      this.saveToLocalStorage(this.todoList);
+      resolve(item);
+    });
   }
 
-  public deleteTodoItem(item: TodoItem) {
-    let deferred = this.$q.defer();
-    
-    this.todoList.splice(this.todoList.indexOf(item), 1);
-    
-    this.saveToLocalStorage(this.todoList);
-    deferred.resolve(item);
-    
-    return deferred.promise;
+  public deleteTodoItem(item: TodoItem): Promise<TodoItem> {
+    return new Promise((resolve) => {
+      this.todoList.splice(this.todoList.indexOf(item), 1);
+      
+      this.saveToLocalStorage(this.todoList);
+      resolve(item);
+    });
   }
   
-  public clearCompleted() {
+  public clearCompleted(): Promise<TodoItem[]> {
     return this.clearOnProperty('completed');
   }
 
-  private clearOnProperty(itemProperty: string) {
-    var deferred = this.$q.defer();
-    
-    var notProperty = this.todoList.filter((item) => {
-      return !item[itemProperty];
+  private clearOnProperty(itemProperty: string): Promise<TodoItem[]> {
+    return new Promise((resolve) => {
+      let notProperty = this.todoList.filter((item: TodoItem) => {
+        return !item[itemProperty];
+      });
+      
+      this.todoList = cloneDeep(notProperty);
+      
+      this.saveToLocalStorage(this.todoList);
+      resolve(this.todoList);
     });
-    
-    angular.copy(notProperty, this.todoList);
-    
-    this.saveToLocalStorage(this.todoList);
-    deferred.resolve(this.todoList);
-    
-    return deferred.promise;
   }
 
-  private getFromLocalStorage() {
+  private getFromLocalStorage(): TodoItem[] {
     return JSON.parse(localStorage.getItem(this.STORAGE_ID) || '[]');
   }
 
-  private saveToLocalStorage(items) {
+  private saveToLocalStorage(items): void {
     localStorage.setItem(this.STORAGE_ID, JSON.stringify(items));
   }
 }

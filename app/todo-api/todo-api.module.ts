@@ -1,19 +1,11 @@
 import * as angular from 'angular'
 import { TodoApi } from './todo-api.service';
 import { NgModule } from '@angular/core';
-  
-export const todoApiModule = angular
-  .module('todo.api', [  
-  ])
-  .service('TodoApi', TodoApi);
+import { downgradeInjectable } from '@angular/upgrade/static';
 
 @NgModule({
   providers: [
-    { provide: TodoApi, useFactory: todoApiFactory, deps: ['$injector'] }
+    TodoApi
   ]
 })
 export class TodoApiModule {}
-
-export function todoApiFactory($injector: angular.auto.IInjectorService): TodoApi {
-  return $injector.get('TodoApi') as TodoApi;
-}

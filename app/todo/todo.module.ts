@@ -2,7 +2,6 @@ import * as angular from 'angular';
 import { TodoComponent } from './todo.component';
 import { TodoListModule } from './todo-list/todo-list.module';
 import { coreModule } from '../core/core.module';
-import { todoApiModule } from '../todo-api/todo-api.module';
 import { NgModule } from '@angular/core';
 import { TodoFooterModule } from './todo-footer/todo-footer.module';
 import { TodoFooterComponent } from './todo-footer/todo-footer.component';
@@ -11,11 +10,11 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodoFormModule } from './todo-form/todo-form.module';
 import { LoggerModule } from '../blocks/logger/logger.module';
+import { TodoApiModule } from '../todo-api/todo-api.module';
 
 export const todoModule = angular
   .module('todo.todo', [
-    coreModule.name,
-    todoApiModule.name
+    coreModule.name
   ])
   .directive('todo', downgradeComponent({ component: TodoComponent }))
   .directive('todoFooter', downgradeComponent({ component: TodoFooterComponent }))
@@ -36,10 +35,11 @@ export const todoModule = angular
 
 @NgModule({
   imports: [
+    LoggerModule,
+    TodoApiModule,
     TodoFooterModule,
     TodoListModule,
     TodoFormModule,
-    LoggerModule
   ],
   declarations: [TodoComponent],
   entryComponents: [TodoComponent],
