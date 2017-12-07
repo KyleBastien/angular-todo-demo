@@ -19,6 +19,7 @@
       '@angular/animations': 'npm:@angular/animations/bundles/animations.umd.js',
       '@angular/animations/browser': 'npm:@angular/animations/bundles/animations-browser.umd.js',
       '@angular/platform-browser/animations': 'npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js',
+      '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       lodash: 'npm:lodash',
       rxjs: 'npm:rxjs',
     },

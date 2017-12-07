@@ -1,12 +1,15 @@
-import * as angular from 'angular';
-import { AppController } from './app.controller';
+import { Component } from '@angular/core';
 
 // Usage:
 // <app></app>
 // Creates:
 // App Component that displays the Todo App
 
-export const AppComponent: angular.IComponentOptions = {
-  templateUrl: '/app/app.html',
-  controller: AppController,
+@Component({
+  selector: 'app',
+  templateUrl: './app.html'
+})
+export class AppComponent {
+  constructor() {
+  }
 }

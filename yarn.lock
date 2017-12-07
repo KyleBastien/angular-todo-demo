@@ -53,6 +53,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@angular/router@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-5.1.0.tgz#4e7283e34cd3d244899b289d835b830640c7bad9"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/upgrade@^5.0.3":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@angular/upgrade/-/upgrade-5.0.3.tgz#1a1c26818d2721d4c12e40c34bbf55126f394ddb"
