@@ -17,9 +17,6 @@ export const todoModule = angular
     coreModule.name
   ])
   .directive('todo', downgradeComponent({ component: TodoComponent }))
-  .directive('todoFooter', downgradeComponent({ component: TodoFooterComponent }))
-  .directive('todoList', downgradeComponent({ component: TodoListComponent }))
-  .directive('todoForm', downgradeComponent({ component: TodoFormComponent }))
   .run(['routerHelper', (routerHelper) => {
     routerHelper.configureStates([
       {
