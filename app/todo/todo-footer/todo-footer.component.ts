@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import { TodoItem } from '../../todo-api/todo-api.service';
-import { Logger } from '../../blocks/logger/logger';
+import { TodoItem } from '../../shared/todo-api/todo-api.service';
+import { Logger } from '../../shared/logger/logger';
 
 @Component({
   selector: 'todo-footer',

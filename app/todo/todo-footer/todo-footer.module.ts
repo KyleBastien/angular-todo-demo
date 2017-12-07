@@ -3,7 +3,6 @@ import { TodoFooterComponent } from "./todo-footer.component";
 
 @NgModule({
   declarations: [TodoFooterComponent],
-  entryComponents: [TodoFooterComponent],
   exports: [TodoFooterComponent]
 })
 export class TodoFooterModule {}

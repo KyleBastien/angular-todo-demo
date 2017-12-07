@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { TodoItem } from '../../todo-api/todo-api.service';
+import { TodoItem } from '../../shared/todo-api/todo-api.service';
 
 @Pipe({
   name: 'ItemSearchFilter',

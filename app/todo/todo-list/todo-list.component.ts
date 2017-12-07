@@ -1,8 +1,7 @@
 import { Directive, ElementRef, Injector, Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { transition, animate, style, trigger, state } from '@angular/animations';
-import { UpgradeComponent } from '@angular/upgrade/static';
-import { TodoItem } from '../../todo-api/todo-api.service';
-import { Logger } from '../../blocks/logger/logger';
+import { TodoItem } from '../../shared/todo-api/todo-api.service';
+import { Logger } from '../../shared/logger/logger';
 
 // Usage:
 // <todo-list [items]="items" [searchQuery]="searchQuery" [statusFilter]="statusFilter"

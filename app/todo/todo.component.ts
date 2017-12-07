@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoApi, TodoItem } from '../todo-api/todo-api.service';
-import { Logger } from '../blocks/logger/logger';
+import { TodoItem, TodoApi } from '../shared/todo-api/todo-api.service';
+import { Logger } from '../shared/logger/logger';
 
 // Usage:
 // <todo></todo>

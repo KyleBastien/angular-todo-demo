@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { Logger } from '../../blocks/logger/logger';
+import { Logger } from '../../shared/logger/logger';
 
 // Usage:
 // <todo-form (onSearchQueryChanged)="onSearchQueryChanged($event)"
