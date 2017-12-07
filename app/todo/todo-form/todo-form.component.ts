@@ -1,20 +1,54 @@
-import * as angular from 'angular';
-import { TodoFormController } from './todo-form.controller';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Logger } from '../../blocks/logger/logger';
 
 // Usage:
-// <todo-form on-search-query-changed="$ctrl.onSearchQueryChanged(searchQuery)"
-//   on-status-filter-changed="$ctrl.onStatusFilterChanged(statusFilter)"
-//   on-item-added="$ctrl.onItemAdded(item)"
-//   on-clear-completed-item="$ctrl.clearCompletedItems()"></todo-form>
+// <todo-form (onSearchQueryChanged)="onSearchQueryChanged($event)"
+//   (onStatusFilterChanged)="onStatusFilterChanged($event)"
+//   (onItemAdded)="onItemAdded($event)"></todo-form>
 // Creates:
 // The form to create and filter todo's, plus clear completed todo's.
 
-export const TodoFormComponent: angular.IComponentOptions = {
-  templateUrl: '/app/todo/todo-form/todo-form.html',
-  controller: TodoFormController,
-  bindings: {
-    onSearchQueryChanged: '&',
-    onStatusFilterChanged: '&',
-    onItemAdded: '&',
-  },
-};
+@Component({
+  selector: 'todo-form',
+  templateUrl: './todo-form.html'
+})
+export class TodoFormComponent implements OnInit {
+
+  @Output()
+  public onSearchQueryChanged: EventEmitter<string>;
+
+  @Output()
+  public onStatusFilterChanged: EventEmitter<string>;
+
+  @Output()
+  public onItemAdded: EventEmitter<string>;
+
+  public newItemTitle: string;
+  public statusFilter: string;
+  public searchQuery: string;
+
+  constructor(private logger: Logger) {
+    this.onSearchQueryChanged = new EventEmitter<string>();
+    this.onStatusFilterChanged = new EventEmitter<string>();
+    this.onItemAdded = new EventEmitter<string>();
+    this.newItemTitle = '';
+    this.statusFilter = 'null';
+    this.searchQuery = '';
+  }
+
+  public ngOnInit() {
+    this.logger.info('TodoForm Component Activated');
+  }
+
+  public insertTodoItem() {
+    this.onItemAdded.emit(this.newItemTitle);
+  }
+
+  public statusFilterChanged() {
+    this.onStatusFilterChanged.emit(this.statusFilter);
+  }
+
+  public searchQueryChanged() {
+    this.onSearchQueryChanged.emit(this.searchQuery);
+  }
+}

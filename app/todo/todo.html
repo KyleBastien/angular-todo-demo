@@ -2,9 +2,9 @@
   <div class="row">
       
     <div class="col-md-2">
-      <todo-form on-search-query-changed="$ctrl.searchQuery = searchQuery"
-         on-status-filter-changed="$ctrl.statusFilter = statusFilter"
-         on-item-added="$ctrl.insertTodoItem(item)"></todo-form>
+      <todo-form (on-search-query-changed)="$ctrl.searchQuery = $event"
+         (on-status-filter-changed)="$ctrl.statusFilter = $event"
+         (on-item-added)="$ctrl.insertTodoItem($event)"></todo-form>
     </div>
         
     <div class="col-md-10">

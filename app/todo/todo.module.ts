@@ -1,7 +1,6 @@
 import * as angular from 'angular';
 import { TodoComponent } from './todo.component';
 import { TodoListModule } from './todo-list/todo-list.module';
-import { todoFormModule } from './todo-form/todo-form.module';
 import { coreModule } from '../core/core.module';
 import { todoApiModule } from '../todo-api/todo-api.module';
 import { NgModule } from '@angular/core';
@@ -9,16 +8,18 @@ import { TodoFooterModule } from './todo-footer/todo-footer.module';
 import { TodoFooterComponent } from './todo-footer/todo-footer.component';
 import { downgradeComponent } from '@angular/upgrade/static';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoFormComponent } from './todo-form/todo-form.component';
+import { TodoFormModule } from './todo-form/todo-form.module';
 
 export const todoModule = angular
   .module('todo.todo', [
     coreModule.name,
-    todoApiModule.name,
-    todoFormModule.name
+    todoApiModule.name
   ])
   .component('todo', TodoComponent)
   .directive('todoFooter', downgradeComponent({ component: TodoFooterComponent }))
   .directive('todoList', downgradeComponent({ component: TodoListComponent }))
+  .directive('todoForm', downgradeComponent({ component: TodoFormComponent }))
   .run(['routerHelper', (routerHelper) => {
     routerHelper.configureStates([
       {
@@ -35,7 +36,8 @@ export const todoModule = angular
 @NgModule({
   imports: [
     TodoFooterModule,
-    TodoListModule
+    TodoListModule,
+    TodoFormModule
   ]
 })
 export class TodoModule {}

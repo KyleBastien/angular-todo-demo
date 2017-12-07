@@ -1,9 +1,9 @@
-Search: <input type="text" ng-model="$ctrl.searchQuery" ng-change="$ctrl.searchQueryChanged()"><br/>
+Search: <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="searchQueryChanged()"><br/>
 Sort by:
-<select ng-model="$ctrl.statusFilter" ng-change="$ctrl.statusFilterChanged()">
+<select [(ngModel)]="statusFilter" (ngModelChange)="statusFilterChanged()">
   <option value="null">All</option>
   <option value="false">Active</option>
   <option value="true">Completed</option>
 </select>
 <br/>
-Insert Item: <input ng-model="$ctrl.newItem"> <button ng-click="$ctrl.insertTodoItem($ctrl.newItem)">Add Item</button><br/>
+Insert Item: <input [(ngModel)]="newItemTitle"> <button (click)="insertTodoItem()">Add Item</button><br/>
