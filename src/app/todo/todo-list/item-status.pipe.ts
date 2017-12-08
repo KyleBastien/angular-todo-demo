@@ -7,11 +7,11 @@ import { TodoItem } from '../../shared/todo-api/todo-api.service';
 })
 export class ItemStatusFilter implements PipeTransform {
   transform(input: TodoItem[], status: string | boolean) {
-    if(status === "null" || !status || !input) {
+    if (status === 'null' || !status || !input) {
       return input;
     }
-    
-    if(status === "false") {
+
+    if (status === 'false') {
       status = false;
     } else {
       status = true;

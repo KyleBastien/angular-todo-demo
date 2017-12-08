@@ -7,7 +7,7 @@ import { TodoItem } from '../../shared/todo-api/todo-api.service';
 })
 export class ItemSearchFilter implements PipeTransform {
   transform(input: TodoItem[], searchQuery: string) {
-    if(!input || !searchQuery || searchQuery === '') {
+    if (!input || !searchQuery || searchQuery === '') {
       return input;
     }
 
