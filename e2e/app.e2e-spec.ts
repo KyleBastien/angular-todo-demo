@@ -7,8 +7,8 @@ describe('angular-todo-demo App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display completed in footer', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toContain('Completed');
   });
 });
